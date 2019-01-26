@@ -1,0 +1,33 @@
+/*search.css与searchList.css公用的搜索栏区样式*/
+.lt-search {
+	width: 100%;
+	padding: 10px;
+}
+.lt-search form {
+	width: 100%;
+	position: relative;
+}
+.lt-search form input {
+	padding: 0 10px 0 10px;
+	margin: 0;
+	width: 83%;
+	height: 30px;
+	border: 1px solid #006699;
+	line-height: 28px;
+	background: #fff;
+	text-align: left;
+	font-size: 12px;
+}
+.lt-search form a {
+	position: absolute;
+	width: 15%;
+	height: 30px;
+	color: #fff;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 6px;
+	background: #006699;
+	right: 0;
+	top: 0;
+	font-size: 16px;
+}

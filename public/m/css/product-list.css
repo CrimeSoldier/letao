@@ -1,0 +1,28 @@
+/*商品列表模块*/
+.product {
+	width: 100%;
+	padding: 10px;
+}
+.product .product-item {
+	float: left;
+	width: 48%;
+	box-shadow: 1px 1px 2px #ccc;
+	margin-top: 10px;
+	background: #fff;
+}
+.product .product-item:nth-child(2n) {
+	margin-left: 4%;
+}
+.product .product-item img {
+	display: block;
+	width: 100%;
+}
+.product .product-item p {
+	padding: 0 10px;
+}
+.product .product-item span {
+	font-size: 14px;
+	line-height: 20px;
+	float: left;
+	margin: 0 0 7px 10px;
+}
