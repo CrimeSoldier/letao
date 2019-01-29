@@ -85,3 +85,8 @@ li {
 .lt-footer a.now span.fa, .lt-footer a.now p {
 	color: #fda600;
 }
+
+/*消息提示框样式*/
+.mui-toast-container {
+	top: 50%;
+}
