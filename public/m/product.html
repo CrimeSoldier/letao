@@ -34,77 +34,7 @@
 			<div class="mui-scroll-wrapper wrapper">
 				<div class="mui-scroll">
 					<!--这里放置真实显示的DOM内容-->
-					<!-- 轮播图 -->
-					<div class="mui-slider">
-					  <div class="mui-slider-group mui-slider-loop">
-					  	<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-					  	<div class="mui-slider-item mui-slider-item-duplicate">
-							<a href="#"><img src="images/banner5.png"></a>
-						</div>
-					    <!--第一个内容区容器-->
-					    <div class="mui-slider-item">
-					      <a href="javascript:;"><img src="images/banner1.png"></a>
-					    </div>
-					    <!--第二个内容区-->
-					    <div class="mui-slider-item">
-					      <a href="javascript:;"><img src="images/banner2.png"></a>
-					    </div>
-					    <!--第三个内容区-->
-					    <div class="mui-slider-item">
-					      <a href="javascript:;"><img src="images/banner3.png"></a>
-					    </div>
-					    <!--第四个内容区-->
-					    <div class="mui-slider-item">
-					      <a href="javascript:;"><img src="images/banner4.png"></a>
-					    </div>
-					    <!--第五个内容区-->
-					    <div class="mui-slider-item">
-					      <a href="javascript:;"><img src="images/banner5.png"></a>
-					    </div>
-					    <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-					    <div class="mui-slider-item mui-slider-item-duplicate">
-							<a href="#"><img src="images/banner1.png"></a>
-						</div>
-					  </div>
-					  <div class="mui-slider-indicator">
-						<div class="mui-indicator mui-active"></div>
-						<div class="mui-indicator"></div>
-						<div class="mui-indicator"></div>
-						<div class="mui-indicator"></div>
-						<div class="mui-indicator"></div>
-					  </div>
-					</div>
-					<!-- 商品描述 -->
-					<div class="product-desc">
-						<span>商品描述商品描述商品描述商品描述商品描述</span>
-					</div>
-					<!-- 商品价格 -->
-					<div class="product-price mui-clearfix">
-						<span>价格：</span>
-						<span class="price">&yen;499.1</span>
-					</div>
-					<!-- 商品尺码 -->
-					<div class="product-size mui-clearfix">
-						<span>尺码：</span>
-						<span class="size">40</span>
-						<span class="size">41</span>
-						<span class="size">42</span>
-						<span class="size">43</span>
-						<span class="size">44</span>
-						<span class="size">45</span>
-						<span class="size">46</span>
-						<span class="size">47</span>
-						<span class="size">48</span>
-					</div>
-					<!-- 商品数量 -->
-					<div class="product-quantity mui-clearfix">
-						<span>数量：</span>
-						<span class="minus">-</span>
-						<span class="quantity">0</span>
-						<span class="plus">+</span>
-						<span class="remain">20件</span>
-						<span class="remain-title">剩余：</span>
-					</div>
+					<!-- TODO -->
 				</div>
 			</div>
 		</div>
@@ -115,6 +45,69 @@
 			<a href="javascript:;" id="add-to-cart">加入购物车</a>
 		</footer>
 	</div>
+	<script type="text/template" id="product-detail">
+		<!-- 轮播图 -->
+		<div class="mui-slider">
+		  <div class="mui-slider-group mui-slider-loop">
+		  	<% if(!pic || !pic.length) { %>
+				<div class="mui-slider-item">
+					<a href="javascript:;"><img src="images/none.jpg"></a>
+			    </div>
+			<% } else if (pic.length == 1) { %>
+				<div class="mui-slider-item">
+					<a href="javascript:;"><img src="<%= pic[0].picAddr %>"></a>
+			    </div>
+			<% } else { %>
+				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+			  	<div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="javascript:;"><img src="<%= pic[pic.length - 1].picAddr %>"></a>
+				</div>
+				<% for(var i = 0; i < pic.length; i++) { %>
+					<div class="mui-slider-item">
+						<a href="javascript:;"><img src="<%= pic[i].picAddr %>"></a>
+				    </div>
+				<% } %>
+			    <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+			    <div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="javascript:;"><img src="<%= pic[0].picAddr %>"></a>
+				</div>
+			<% } %>
+		  </div>
+		  <div class="mui-slider-indicator">
+		  	<% if(pic && pic.length > 1) { %>
+		  		<% for(var i = 0; i < pic.length; i++) { %>
+		  			<div class="mui-indicator <%= i == 0 ? 'mui-active' : '' %>"></div>
+		  		<% } %>
+		  	<% } %>
+		  </div>
+		</div>
+		<!-- 商品描述 -->
+		<div class="product-desc">
+			<span><%= proName %></span>
+		</div>
+		<!-- 商品价格 -->
+		<div class="product-price mui-clearfix">
+			<span>价格：</span>
+			<span class="price">&yen;<%= price %></span>
+		</div>
+		<!-- 商品尺码 -->
+		<div class="product-size mui-clearfix">
+			<span>尺码：</span>
+			<% var sizeArr = size.split('-'); %>
+			<% for (var i = sizeArr[0]; i <= sizeArr[1]; i++) { %>
+				<span class="size"><%= i %></span>
+			<% } %>
+		</div>
+		<!-- 商品数量 -->
+		<div class="product-quantity mui-clearfix">
+			<span>数量：</span>
+			<span class="minus">-</span>
+			<input type="text" class="quantity" value="0" readonly>
+			<span class="plus">+</span>
+			<span class="remain">10件</span>
+			<span class="remain-title">剩余：</span>
+		</div>
+	</script>
 	<script src="assets/mui/js/mui.js"></script>
 	<script src="assets/zepto/zepto.js"></script>
 	<script src="assets/artTemplate/template-native.js"></script>

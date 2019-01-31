@@ -49,25 +49,35 @@ body {
 	height: 30px;
 	text-align: center;
 	line-height: 28px;
-	border: 1px solid #000;
+	border: 1px solid #ccc;
 	margin-right: 10px;
+}
+.product-size span.now {
+	background-color: #ffb600;
+	color: #fff;
 }
 .lt-content .product-quantity {
 	padding: 20px;
 	line-height: 30px;
 	border-bottom: 1px solid #ccc;
 }
-.product-quantity span {
+.product-quantity span, input {
 	float: left;
 	font-size: 16px;
 }
-.product-quantity span.minus, .product-quantity span.quantity, .product-quantity span.plus {
+.product-quantity input {
+	padding: 0;
+	margin: 0;
+	height: 30px;
+	border-radius: 0;
+}
+.product-quantity span.minus, .product-quantity input.quantity, .product-quantity span.plus {
 	width: 30px;
 	border: 1px solid #000;
 	text-align: center;
 	line-height: 28px;
 }
-.product-quantity span.minus, .product-quantity span.quantity {
+.product-quantity span.minus, .product-quantity input.quantity {
 	border-right: 0;
 }
 .product-quantity span.remain-title, .product-quantity span.remain {

@@ -88,5 +88,5 @@ li {
 
 /*消息提示框样式*/
 .mui-toast-container {
-	top: 50%;
+	bottom: 50%;
 }
